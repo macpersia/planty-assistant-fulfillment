@@ -11,6 +11,7 @@
     "logs": "firebase functions:log"
   },
   "main": "lib/index.js",
+  "typings": "index.d.ts",
   "dependencies": {
     "firebase-admin": "~6.0.0",
     "firebase-functions": "^2.1.0"
@@ -19,5 +20,8 @@
     "tslint": "~5.8.0",
     "typescript": "~2.8.3"
   },
-  "private": false
+  "private": false,
+  "optionalDependencies": {
+    "planty-assistant-model": "file:../../planty-assistant-model/lib"
+  }
 }
