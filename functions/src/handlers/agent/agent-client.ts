@@ -86,7 +86,7 @@ export class AgentClient {
                 } else {
                     headers['content-type'] = 'application/json';
                     // headers[PAYLOAD_TYPE_KEY] = payload.getClass().getTypeName();
-                    headers[PAYLOAD_TYPE_KEY] = 'be.planty.models.prototyping.ActionRequest';
+                    headers[PAYLOAD_TYPE_KEY] = 'be.planty.models.assistant.ActionRequest';
                     const stringifiedPayload = JSON.stringify(payload);
                     console.info("Sending an object payload to '" + reqDest + "' : ", stringifiedPayload);
                     stompClient.send(reqDest, headers, stringifiedPayload);

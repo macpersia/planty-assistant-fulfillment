@@ -7,7 +7,7 @@ const PAYLOAD_TYPE_KEY = "planty.payload.type";
 export class AgentSessionHandler /*implements StompSessionHandlerAdapter*/ {
 
     protected readonly emailAddress: string;
-    public connectCallback = (frame: Stomp.Frame) => this.afterConnected({}, frame.headers);
+    public connectCallback = (frame: Stomp.Frame) => this.afterConnected(frame.headers);
     public messageCallback = (message: Stomp.Message) => this.handleFrame(message.headers, message.body);
 
     constructor(protected readonly conv: DialogflowConversation,
@@ -18,9 +18,9 @@ export class AgentSessionHandler /*implements StompSessionHandlerAdapter*/ {
     }
 
     //@Override
-    public afterConnected(session/*: StompSession*/, connectedHeaders/*: StompHeaders*/): void {
+    public afterConnected(/*session: StompSession, */connectedHeaders/*: StompHeaders*/): void {
         // super.afterConnected(session, connectedHeaders);
-        console.log('>>>> inside afterConnected, session: ', session);
+        // console.log('>>>> inside afterConnected, session: ', session);
         console.log('>>>> inside afterConnected, headers: ', connectedHeaders);
     }
 
@@ -62,30 +62,14 @@ export class AgentSessionHandler /*implements StompSessionHandlerAdapter*/ {
         }
     }
 
-    // private String toPrettyJson(Object payload) {
-    //     String prettyPayload;
-    //     try {
-    //         prettyPayload = payload instanceof String ?
-    //             (String) payload
-    //             : (payload instanceof byte[] ?
-    //                 new String((byte[]) payload)
-    //                 : objectWriter.writeValueAsString(payload));
-
-    //     } catch (JsonProcessingException e) {
-    //         logger.error(e.getMessage(), e);
-    //         prettyPayload = String.valueOf(payload);
-    //     }
-    //     return prettyPayload;
+    // // @Override
+    // public handleException(session/*: StompSession*/, command/*: StompCommand*/, headers/*: StompHeaders*/,
+    //     payload/*: byte[]*/, exception/*: Throwable*/): void {
+    //     console.error(exception.toString(), exception);
     // }
 
-    // @Override
-    public handleException(session/*: StompSession*/, command/*: StompCommand*/, headers/*: StompHeaders*/,
-        payload/*: byte[]*/, exception/*: Throwable*/): void {
-        console.error(exception.toString(), exception);
-    }
-
-    // @Override
-    public handleTransportError(session/*: StompSession*/, exception/*: Throwable*/): void {
-        console.error(exception.toString(), exception);
-    }
+    // // @Override
+    // public handleTransportError(session/*: StompSession*/, exception/*: Throwable*/): void {
+    //     console.error(exception.toString(), exception);
+    // }
 }

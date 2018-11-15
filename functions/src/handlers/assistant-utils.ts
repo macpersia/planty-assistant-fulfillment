@@ -1,6 +1,6 @@
 import { DialogflowConversation } from "actions-on-google";
 
-export const getEmailAddress = (conv: DialogflowConversation): string | null => {
+export const getEmailAddress: (DialogflowConversation) => string | null = (conv) => {
     // // console.log('>>>> all contexts: ', conv.contexts);
     // const ctx = conv.contexts.get('my-session');
     // console.log('>>>> ctx: ', ctx);    

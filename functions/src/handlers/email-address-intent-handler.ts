@@ -1,7 +1,7 @@
 import { DialogflowConversation, BasicCard } from "actions-on-google";
 import { getEmailAddress } from "./assistant-utils";
 
-export const emailAddressIntentHandler = (conv: DialogflowConversation) => {
+export const emailAddressIntentHandler: (DialogflowConversation) => any = (conv) => {
     const emailAddress = getEmailAddress(conv);
     const title = emailAddress ?
         'EmailAddress'
