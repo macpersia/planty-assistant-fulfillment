@@ -1,4 +1,11 @@
 {
+  "linterOptions": {
+    "exclude": [
+      "lib",
+      "node_modules",
+      "src/**/*.spec.ts"
+    ]
+  },
   "rules": {
     // -- Strict errors --
     // These lint rules are likely always a good idea.
