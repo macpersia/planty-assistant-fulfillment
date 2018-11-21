@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "lib": ["es6"],
+    "declaration": true,
+    "lib": ["es6", "dom"],
     "module": "commonjs",
     "noImplicitReturns": true,
     "outDir": "lib",
@@ -10,5 +11,8 @@
   "compileOnSave": true,
   "include": [
     "src"
+  ],
+  "exclude": [
+    "src/handlers/agent/*.spec.ts"
   ]
 }
