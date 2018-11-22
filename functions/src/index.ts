@@ -14,8 +14,7 @@ import { testProgressiveResponseIntentHandler } from './handlers/test-progressiv
 import { emailAddressIntentHandler } from './handlers/email-address-intent-handler';
 
 // Create an app instance
-const app = dialogflow({
-});
+const app = dialogflow();
 
 
 // Intent that starts the account linking flow.

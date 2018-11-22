@@ -50,6 +50,8 @@ export class AgentClient {
         return response['id_token'];
     }
 
+    protected getPayloadType = () => 'be.planty.models.assistant.ActionRequest';
+
     public async messageAgent(conv: DialogflowConversation, payload: any): Promise<Response> {
 
         const emitter = new EventEmitter();
@@ -86,7 +88,7 @@ export class AgentClient {
                 } else {
                     headers['content-type'] = 'application/json';
                     // headers[PAYLOAD_TYPE_KEY] = payload.getClass().getTypeName();
-                    headers[PAYLOAD_TYPE_KEY] = 'be.planty.models.assistant.ActionRequest';
+                    headers[PAYLOAD_TYPE_KEY] = this.getPayloadType();
                     const stringifiedPayload = JSON.stringify(payload);
                     console.info("Sending an object payload to '" + reqDest + "' : ", stringifiedPayload);
                     stompClient.send(reqDest, headers, stringifiedPayload);
