@@ -4,10 +4,9 @@ import uuid = require('uuid');
 import requestPromise = require('request-promise');
 import SockJS = require('sockjs-client');
 import Stomp = require('stompjs');
-import { getEmailAddress } from "../assistant-utils";
-import { EventEmitter } from "events";
-
-const PAYLOAD_TYPE_KEY = 'planty.payload.type';
+import { getEmailAddress } from '../assistant-utils';
+import { EventEmitter } from 'events';
+import { PAYLOAD_TYPE_KEY, ORIGIN_EMAIL_KEY } from 'planty-assistant-model/constants';
 
 export class AgentClient {
     private readonly baseUrl = process.env["PLANTY_ASSISTANT_LOGIN_URL"];
@@ -81,6 +80,8 @@ export class AgentClient {
                 const reqDest = "/topic/action-requests/" + (emailAddress || null);
                 const headers: /*StompHeaders*/any = /*new StompHeaders()*/{};
                 headers['message-id'] = messageId;
+                if (emailAddress)
+                    headers[ORIGIN_EMAIL_KEY] = emailAddress;
                 if (typeof payload == 'string') {
                     headers['content-type'] = 'text/plain';
                     console.info("Sending a string payload to '" + reqDest + "' : " + payload);
