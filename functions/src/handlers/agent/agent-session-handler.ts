@@ -6,7 +6,7 @@ const PAYLOAD_TYPE_KEY = "planty.payload.type";
 
 export class AgentSessionHandler /*implements StompSessionHandlerAdapter*/ {
 
-    protected readonly emailAddress: string;
+    //protected readonly emailAddress?: string;
     public connectCallback = (frame: Stomp.Frame) => this.afterConnected(frame.headers);
     public messageCallback = (message: Stomp.Message) => this.handleFrame(message.headers, message.body);
 
@@ -14,7 +14,7 @@ export class AgentSessionHandler /*implements StompSessionHandlerAdapter*/ {
                 protected readonly messageId: string,
                 protected readonly responseHandler: (res: Response) => any
     ) {
-        this.emailAddress = getEmailAddress(conv);
+        //this.emailAddress = getEmailAddress(conv);
     }
 
     //@Override
@@ -48,8 +48,8 @@ export class AgentSessionHandler /*implements StompSessionHandlerAdapter*/ {
 
         if (headers['correlation-id'] == this.messageId
             && destination.startsWith('/user/queue/action-responses')
-            && destination.endsWith(this.emailAddress)) {
-
+            //&& (!this.emailAddress || destination.endsWith(this.emailAddress))
+        ) {
             const response = payload instanceof String ?
                 payload as string
                 : /*toPrettyJson(payload)*/payload;
