@@ -31,4 +31,13 @@ describe('AgentClient', () => {
         expect(response).toBeDefined();
         expect(response).toBe("All right! I'm done!");
     });
+
+    it('should get a response from a shared agent for requesting an action with string input', async () => {
+        expect(instance).toBeInstanceOf(AgentClient);
+        const mockConv = mocked(new DialogflowConversation()) as DialogflowConversation;
+        const message = "Ping!";
+        const response = await instance.messageAgent(mockConv, message);
+        expect(response).toBeDefined();
+        expect(response).toBe("Agent pong!");
+    });
 });
