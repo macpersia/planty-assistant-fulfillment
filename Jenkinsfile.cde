@@ -20,7 +20,7 @@ node ('ecs-fargate') {
                 sh "npm run build"
                 sh "cp package.json lib/"
                 //sh "npm pack lib/"
-                sh "npm publish lib/"
+                sh "npm publish lib/ --registry http://artifactory.topdanmark.local/artifactory/api/npm/npm-local"
             //}
         }
 	}
