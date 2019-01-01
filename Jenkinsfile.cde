@@ -1,0 +1,27 @@
+node ('ecs2') {
+    def branch = "${env.BRANCH_NAME}".toLowerCase()
+
+    stage('versions in use') {
+        sh """
+            git --version
+            node --version
+            npm --version
+        """
+    }
+
+    stage('git') {
+		git url: "https://macpersia@bitbucket.org/planty-assistant-devs/planty-assistant-fulfillment.git", branch: branch
+	}
+
+	stage('build & publish') {
+        dir (path: './functions/') {
+    		//nodejs('nodejs-10.14.2') {
+                sh "npm install"
+                sh "npm run build"
+                sh "cp package.json lib/"
+                //sh "npm pack lib/"
+                sh "npm publish lib/"
+            //}
+        }
+	}
+}
