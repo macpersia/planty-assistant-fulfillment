@@ -7,7 +7,7 @@ import * as functions from 'firebase-functions';
 //  response.send("Hello from Firebase!");
 // });
 
-import { dialogflow, Image, BasicCard, Suggestions, SignIn, SignInArgument } from 'actions-on-google';
+import { dialogflow/* , Image, BasicCard, Suggestions */, SignIn, SignInArgument } from 'actions-on-google';
 
 import { defaultWelcomeIntentHandler, fallbackIntentHandler } from './handlers';
 import { testProgressiveResponseIntentHandler } from './handlers/test-progressive-response-intent-handler';
@@ -30,8 +30,9 @@ app.intent('Start Sign-in', conv => {
 // console.log(conv);
 app.intent('Get Sign-in', (conv, params, signIn: SignInArgument) => {
   console.log('>>>> sign-in arg in "Get Sign-in": ', signIn);
+  const payload = conv.user.profile.payload
   if (signIn.status === 'OK') {
-    const email = conv.user.profile.payload.email;
+    const email = payload ? payload.email : undefined;
 
     // let ctx = conv.contexts.get('my-session');
     // // if (!ctx) {
@@ -43,10 +44,9 @@ app.intent('Get Sign-in', (conv, params, signIn: SignInArgument) => {
     // params.email = email;
     // conv.contexts.output['my-session'] = ctx;
     // // console.log('>>>> all contexts - after: ', conv.contexts);
-    conv.data['email'] = email;
+    (conv.data as any)['email'] = email;
 
-    const payload = conv.user.profile.payload
-    conv.ask(`I got your account details, ${payload.name}. What do you want to do next?`)
+    conv.ask(`I got your account details, ${payload ? payload.name : undefined}. What do you want to do next?`)
 
   } else {
     conv.ask(`I won't be able to save your data, but what do you want to do next?`)

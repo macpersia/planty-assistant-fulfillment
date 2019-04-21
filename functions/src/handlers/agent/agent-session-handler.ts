@@ -1,8 +1,8 @@
 import { DialogflowConversation, Response } from 'actions-on-google';
-import { getEmailAddress } from '../assistant-utils';
+// import { getEmailAddress } from '../assistant-utils';
 import Stomp = require('stompjs');
 
-const PAYLOAD_TYPE_KEY = "planty.payload.type";
+// const PAYLOAD_TYPE_KEY = "planty.payload.type";
 
 export class AgentSessionHandler /*implements StompSessionHandlerAdapter*/ {
 
@@ -18,7 +18,7 @@ export class AgentSessionHandler /*implements StompSessionHandlerAdapter*/ {
     }
 
     //@Override
-    public afterConnected(/*session: StompSession, */connectedHeaders/*: StompHeaders*/): void {
+    public afterConnected(/*session: StompSession, */connectedHeaders/*: StompHeaders*/: any): void {
         // super.afterConnected(session, connectedHeaders);
         // console.log('>>>> inside afterConnected, session: ', session);
         console.log('>>>> inside afterConnected, headers: ', connectedHeaders);
@@ -39,7 +39,7 @@ export class AgentSessionHandler /*implements StompSessionHandlerAdapter*/ {
     // }
 
     // @Override
-    public handleFrame(headers/*: StompHeaders*/, payload: any): void {
+    public handleFrame(headers/*: StompHeaders*/: any, payload: any): void {
 
         console.log('>>>> handling frame...');
         console.log('>>>> headers: ', headers);

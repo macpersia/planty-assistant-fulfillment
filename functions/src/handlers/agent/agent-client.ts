@@ -9,9 +9,9 @@ import { EventEmitter } from 'events';
 import { PAYLOAD_TYPE_KEY, ORIGIN_EMAIL_KEY } from 'planty-assistant-model/constants';
 
 export class AgentClient {
-    private readonly baseUrl = process.env["PLANTY_ASSISTANT_LOGIN_URL"];
-    private readonly username = process.env["PLANTY_ASSISTANT_ACCESS_ID"];
-    private readonly password = process.env["PLANTY_ASSISTANT_ACCESS_KEY"];
+    private readonly baseUrl = process.env["PLANTY_ASSISTANT_LOGIN_URL"] || 'undefined_url';
+    private readonly username = process.env["PLANTY_ASSISTANT_ACCESS_ID"] || 'undefined_username';
+    private readonly password = process.env["PLANTY_ASSISTANT_ACCESS_KEY"] || 'undefined_password';
 
     protected createStompClient(url: string): Stomp.Client {
         const sockJsClient = new SockJS(url.replace(/^ws/, 'http'));

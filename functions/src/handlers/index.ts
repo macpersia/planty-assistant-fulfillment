@@ -1,6 +1,6 @@
-import { dialogflow, DialogflowConversation } from 'actions-on-google';
+import { DialogflowConversation } from 'actions-on-google';
 
-export const defaultWelcomeIntentHandler: (DialogflowConversation) => any = (conv) => {
+export const defaultWelcomeIntentHandler = (conv: DialogflowConversation) => {
   // conv.ask('Hi, how is it going?');
   // conv.ask(`Here's a picture of a cat`);
   // conv.ask(new Image({
@@ -11,7 +11,7 @@ export const defaultWelcomeIntentHandler: (DialogflowConversation) => any = (con
   // conv.ask("Welcome to Planty Proto Skill. You can ask Proto to create a web app for you.");
 };
 
-export const fallbackIntentHandler: (DialogflowConversation) => any = (conv) => {
+export const fallbackIntentHandler = (conv: DialogflowConversation) => {
   conv.ask(`I didn't understand`);
   conv.ask(`I'm sorry, can you try again?`);
   // conv.ask("Sorry, I don't know that. You can try saying help!");
