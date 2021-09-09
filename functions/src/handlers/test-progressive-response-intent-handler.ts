@@ -1,6 +1,6 @@
-import { DialogflowConversation, BasicCard, Suggestions } from 'actions-on-google';
+import { /* DialogflowConversation,  */BasicCard, Suggestions } from 'actions-on-google';
 
-export const testProgressiveResponseIntentHandler = (conv: DialogflowConversation) => {
+export const testProgressiveResponseIntentHandler = (conv: /* DialogflowConversation */any) => {
     //console.log('agent parameter for getPhoneNoIntent: ', agent);
     conv.ask(`This message is from Dialogflow's Cloud Functions for Agent Proto!`);
     conv.ask(new BasicCard({
