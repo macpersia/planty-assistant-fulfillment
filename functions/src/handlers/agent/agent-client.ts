@@ -1,7 +1,7 @@
 import { DialogflowConversation, Response } from "actions-on-google";
 import { AgentSessionHandler } from "./agent-session-handler";
 import uuid = require('uuid');
-import requestPromise = require('request-promise');
+import requestPromise = require('request-promise-native');
 import SockJS = require('sockjs-client');
 import Stomp = require('stompjs');
 import { getEmailAddress } from '../assistant-utils';
@@ -67,7 +67,7 @@ export class AgentClient {
 
         console.log("Connecting to: " + url + " ...");
         const connectAsync = (headers?: any) => new Promise<Stomp.Frame>((resolve, reject) => { 
-            stompClient.connect(headers, resolve, reject); 
+            stompClient.connect(headers, resolve as any, reject); 
         });
         // const futureSession = connectAsync({})
         connectAsync({})
