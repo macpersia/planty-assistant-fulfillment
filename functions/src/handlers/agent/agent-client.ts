@@ -1,7 +1,7 @@
 import { DialogflowConversation, Response } from "actions-on-google";
 import { AgentSessionHandler } from "./agent-session-handler";
 import uuid = require('uuid');
-import requestPromise = require('request-promise');
+import requestPromise = require('request-promise-native');
 import SockJS = require('sockjs-client');
 import Stomp = require('stompjs');
 import { getEmailAddress } from '../assistant-utils';
