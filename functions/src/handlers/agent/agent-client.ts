@@ -67,7 +67,7 @@ export class AgentClient {
 
         console.log("Connecting to: " + url + " ...");
         const connectAsync = (headers?: any) => new Promise<Stomp.Frame>((resolve, reject) => { 
-            stompClient.connect(headers, resolve, reject); 
+            stompClient.connect(headers, resolve as any, reject); 
         });
         // const futureSession = connectAsync({})
         connectAsync({})
